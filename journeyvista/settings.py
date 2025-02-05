@@ -69,10 +69,15 @@ CORS_ALLOW_ALL_ORIGINS = True
 # Veritabanı Ayarları (İsteğe bağlı PostgreSQL)
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'CyTXjTWDuNVPtohsAjuLWopPymNspwXr',
+        'HOST': 'autorack.proxy.rlwy.net',
+        'PORT': '53146',
     }
 }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
