@@ -9,8 +9,15 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
+# Medya dosyaları
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# Statik dosyalar (CSS, JS, img)
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -41,7 +48,7 @@ ROOT_URLCONF = 'journeyvista.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],  # Şablonları buradan yükle
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -56,8 +63,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'journeyvista.wsgi.application'
 
+# CORS Ayarları
 CORS_ALLOW_ALL_ORIGINS = True
 
+# Veritabanı Ayarları (İsteğe bağlı PostgreSQL)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -76,9 +85,5 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
-
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
